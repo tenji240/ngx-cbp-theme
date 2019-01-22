@@ -1,5 +1,5 @@
 {
-  "name": "ngx-cbp-theme",
+  "name": "ngx-cbp-theme-alt",
   "version": "1.0.4",
   "peerDependencies": {
     "@angular/common": "^7",
