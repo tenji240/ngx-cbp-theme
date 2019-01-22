@@ -10,9 +10,9 @@ import { InjectionToken } from '@angular/core';
 export class CBPApplication {
   public id: string;
   public description: string;
-  public version ? : string;
-  public context ? : string;
-  constructor(public name ? : string, public href ? : string) {}
+  public version ?: string;
+  public context ?: string;
+  constructor(public name ?: string, public href ?: string) {}
 }
 
 /**

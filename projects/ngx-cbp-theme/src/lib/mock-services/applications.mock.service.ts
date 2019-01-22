@@ -63,7 +63,7 @@ export class MockApplicationsService extends CBPApplicationsService {
     }
     return null;
   }
-  
+
   /**
    * _load() - initates the get request to retrive the list of CBP apps used
    * as well as the user data
@@ -91,7 +91,7 @@ export class MockApplicationsService extends CBPApplicationsService {
 
   /**
    * _getData - collects the and forms the final data object to be consumed by the
-   * universal header 
+   * universal header
    */
   private _getData(): Observable < CBPApplicationsData > {
     return this._getMockHttpData().pipe(
@@ -130,7 +130,7 @@ export class MockApplicationsService extends CBPApplicationsService {
 
   /**
    * _applyUserToApplications - accepts a user and data opect
-   * @param CBPUser user 
+   * @param CBPUser user
    * @param CBPApplicationsData data
    * @returns CBPApplicationsData -
    */

@@ -29,7 +29,7 @@ export class CBPHeaderComponent {
   public toolbarState: CBPToolbarState;
   @Input() cbpAppsMenuExclude: boolean;      // if true, do not show the apps menu with the dropdown
   @Input() cbpFeedbackLinkExclude: boolean;  // if true, do not show the feedback link
-  @Input() cbpUserMenuExclude: boolean;      // if true, do not show the username header area on 
+  @Input() cbpUserMenuExclude: boolean;      // if true, do not show the username header area on
   @Input() cbpAppsMenuSimple: boolean;       // if true, only show the simple version of the apps-menu
   @Input() cbpAppsMenuName: string;          // the name of the CBP String passed in
 

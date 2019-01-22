@@ -83,7 +83,7 @@ $ npm install --save rxjs-compat
 * Stop any of running processes/scripts against your project and then run:
 
   ```bash
-  $ npm install ngx-cbp-theme-2
+  $ npm install ngx-cbp-theme-alt
   ```
 
 * if you run into peer dependency warnings, standardize your `package.json` to match version numbers

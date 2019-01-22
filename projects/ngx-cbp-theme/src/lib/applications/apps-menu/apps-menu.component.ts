@@ -29,7 +29,7 @@ export class CBPApplicationsMenuComponent implements OnInit, OnDestroy {
   menuDataLoaded = false;
   applicationsDataLoading = true;
   isApplicationsExpanded = false;
-  applicationsData ? : CBPApplicationsData;
+  applicationsData ?: CBPApplicationsData;
   private subscriptions = new Subscription();
 
   @ViewChild(MatMenuTrigger) cbpMenuTrigger: MatMenuTrigger;

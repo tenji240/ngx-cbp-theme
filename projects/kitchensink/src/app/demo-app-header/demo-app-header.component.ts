@@ -24,8 +24,8 @@ export class DemoAppHeaderComponent implements OnInit {
     }
   ];
 
-  companyName = "Nicholas Trading Company";
-  
+  companyName = 'Nicholas Trading Company';
+
   constructor() {}
 
   ngOnInit() {}
