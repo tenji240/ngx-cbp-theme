@@ -14,21 +14,21 @@
     class="cbp-toolbar-row mat-toolbar mat-toolbar-row"
     fxLayout="row"
     fxLayoutAlign="space-between stretch">
-  
+
     <!-- Secondary Toolbar Title -->
     <div class="cbp-brand-nav-container">
       <ng-content select=".cbp-toolbar-title"></ng-content>
     </div>
-  
+
     <!-- Secondary Toolbar Main Nav -->
     <div
       class="cbp-toolbar-main-nav-container"
-      *ngIf="isToolbarExpanded ? false : true" 
+      *ngIf="isToolbarExpanded ? false : true"
       xShow="false"
       fxShow.gt-xs>
       <ng-template [ngTemplateOutlet]="cbpToolbarMainNav"></ng-template>
     </div>
-    
+
     <!-- Secondar Right Side Toolbar-->
     <!-- Think of the more_vert icon section -->
     <div
@@ -39,7 +39,7 @@
       fxShow.gt-xs>
       <ng-template [ngTemplateOutlet]="cbpToolbarRightNav"></ng-template>
     </div>
-  
+
     <!-- Mobile Navigaion Trigger Button -->
     <div
       fxFlex="auto"
@@ -86,6 +86,6 @@
 
 <ng-template #cbpToolBarSubNav>
   <div class="mat-toolbar mat-toolbar-row cbp-sub-toolbar">
-    Trading Company: <ng-content select=".cbp-subtoolbar-content"></ng-content>
+    <ng-content select=".cbp-subtoolbar-content"></ng-content>
   </div>
 </ng-template>
