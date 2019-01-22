@@ -7,6 +7,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {DemoCBPAccordionComponent} from './demo-cbp-accordion/demo-cbp-accordion.component';
 import {DemoTypographyComponent} from './demo-typography/demo-typography.component';
 
+
 import {DemoButtonsModule} from './demo-buttons/demo-buttons.module';
 import {DemoAppHeaderModule} from './demo-app-header/demo-app-header.module';
 import {DemoNotificationsModule} from './demo-notifications/demo-notifications.module';
@@ -21,6 +22,7 @@ import {
   CBP_USER_SERVICE,
   CBP_APPLICATIONS_SERVICE
 } from 'ngx-cbp-theme';
+import { MatCardModule } from '@angular/material';
 
 describe('DemoAppComponent', () => {
   beforeEach(async(() => {
@@ -33,7 +35,8 @@ describe('DemoAppComponent', () => {
         CBPNotificationsModule,
         DemoButtonsModule,
         DemoAppHeaderModule,
-        DemoNotificationsModule
+        DemoNotificationsModule,
+        MatCardModule
       ],
       declarations: [
         DemoAppComponent,

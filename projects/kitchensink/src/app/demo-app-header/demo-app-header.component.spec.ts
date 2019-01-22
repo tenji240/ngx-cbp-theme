@@ -12,7 +12,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   MatIconModule,
-  MatTabsModule
+  MatTabsModule,
+  MatMenuModule
 } from '@angular/material';
 
 describe('DemoAppHeaderComponent', () => {
@@ -27,7 +28,8 @@ describe('DemoAppHeaderComponent', () => {
           MatIconModule,
           MatTabsModule,
           FlexLayoutModule,
-          NoopAnimationsModule
+          NoopAnimationsModule,
+          MatMenuModule
         ],
         declarations: [DemoAppHeaderComponent]
       })
