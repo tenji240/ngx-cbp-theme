@@ -1,13 +1,8 @@
 @import '../variables';
 @import 'cbp-palette';
+@import 'buttons';
 
 @include mat-core($cbp-font-config);
-
-// V1 Theme
-$app-primary: mat-palette($cbp-from-primary);
-$app-accent:  mat-palette($cbp-from-info);
-$app-warn:    mat-palette($cbp-from-error);
-$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 // V2 Theme
 // Note, we set the values of the palette maps to match up each primary shade
@@ -18,3 +13,5 @@ $cbp-theme:     mat-light-theme($cbp-primary, $cbp-accent, $cbp-warning);
 
 @include angular-material-theme($cbp-theme);
 
+// Component Mixins
+@include cbp-buttons($cbp-theme);
