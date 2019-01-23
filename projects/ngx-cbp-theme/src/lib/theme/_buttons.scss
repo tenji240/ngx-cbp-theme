@@ -1,24 +1,3 @@
-// Component Mixin
-@mixin cbp-buttons($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-
-  button {
-    padding: 6px 10px;
-    line-height: 1.4; // TODO: Standardize
-    min-width: inherit;
-    border: 1px solid $btn-default-border;
-
-    &[disabled], &:disabled {
-      background-color: $gray-darker;
-      color: $white;
-      opacity: 0.65;
-      cursor: not-allowed;
-    }
-  }
-}
-
 // Regular Basic Buttons
 .mat-button {
   &.cbp-button-success {

@@ -1,6 +1,5 @@
 @import '../variables';
 @import 'cbp-palette';
-@import 'buttons';
 
 @include mat-core($cbp-font-config);
 
@@ -12,6 +11,3 @@ $cbp-warning:   mat-palette($danger-map, 900, 600, 900);
 $cbp-theme:     mat-light-theme($cbp-primary, $cbp-accent, $cbp-warning);
 
 @include angular-material-theme($cbp-theme);
-
-// Component Mixins
-@include cbp-buttons($cbp-theme);
