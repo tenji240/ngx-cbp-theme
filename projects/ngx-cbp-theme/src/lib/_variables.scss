@@ -54,6 +54,37 @@ $light-primary-text: $white;
 //
 $brand-default-highlight:           rgba(20,96,170,.1);
 
+// Data Visualization Colors
+$data-red-dark:                     #600000;
+$data-red:                          $brand-danger;
+$data-red-light:                    #E00000;
+$data-red-subtle:                   #FAB2AA;
+
+$data-blue-dark:                    #003865;
+$data-blue:                         #004C97;
+$data-blue-light:                   #009CDE;
+$data-blue-subtle:                  #95D9FF;
+
+$data-green-dark:                   $brand-success-border; // uses the same hex code. be careful
+$data-green:                        $brand-success;
+$data-green-light:                  #1BAB00;
+$data-green-subtle:                 #C1E8B0;
+
+$data-purple-dark:                  #3C1053;
+$data-purple:                       #671E75;
+$data-purple-light:                 #BB16A3;
+$data-purple-subtle:                #C9B1D0;
+
+$data-yellow-dark:                  #A36900;
+$data-yellow:                       $brand-warning;
+$data-yellow-light:                 #F3CE37;
+$data-yellow-subtle:                #F3E69C;
+
+$data-gray-dark:                    $gray-base;
+$data-gray:                         #63666A;
+$data-gray-light:                   #A7A8AA;
+$data-gray-subtle:                  #D9D9D6;
+
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
