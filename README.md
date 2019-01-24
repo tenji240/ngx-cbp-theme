@@ -1,4 +1,4 @@
-# NGX CBP Theme Alt
+# NGX CBP Theme [DEPRECEATED - NO LONGER MAINTAINED]
 
 Angular native artifacts for consuming [CBP Theme](https://github.com/tenji240/cbp-theme) for Angular 5/6/7/next applications.
 ___
