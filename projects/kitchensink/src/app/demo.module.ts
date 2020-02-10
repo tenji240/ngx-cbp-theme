@@ -2,15 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DemoAppComponent } from './demo.component';
 
-import {
-  MatIconModule,
-  MatTabsModule,
-  MatCardModule
-} from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { DemoCBPAccordionComponent } from './demo-cbp-accordion/demo-cbp-accordion.component';
 import { DemoTypographyComponent } from './demo-typography/demo-typography.component';
 import { DemoButtonsModule } from './demo-buttons/demo-buttons.module';
+import { DemoTableModule } from './demo-table/demo-table.module';
 import { DemoAppHeaderModule } from './demo-app-header/demo-app-header.module';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -29,6 +28,9 @@ import {
   MockApplicationsService,
   MockFeedbackService
 } from 'ngx-cbp-theme';
+import { CommonModule } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
+import { DemoHeaderBetaModule } from './demo-header-beta/demo-header-beta.module';
 
 // NOTE: You don't really need this at the moment
 export const KITCHENSINK_APP_VERSION = ( < any > pkg).version;
@@ -45,18 +47,24 @@ export const KITCHENSINK_APP_VERSION = ( < any > pkg).version;
     MatTabsModule,
     MatIconModule,
     MatCardModule,
+    CommonModule,
+    MatSelectModule,
     CBPRootModule,
     CBPAccordionModule,
     CBPHeaderModule,
     CBPAppHeaderModule,
     CBPNotificationsModule,
     DemoButtonsModule,
+    DemoTableModule,
     DemoAppHeaderModule,
+    DemoHeaderBetaModule,
     DemoNotificationsModule
   ],
   exports: [
     DemoButtonsModule,
-    DemoAppHeaderModule
+    DemoHeaderBetaModule,
+    DemoAppHeaderModule,
+    DemoTableModule
   ],
   providers: [
     MockUserService,

@@ -10,11 +10,9 @@ import { CBPAppHeaderModule } from 'ngx-cbp-theme';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import {
-  MatIconModule,
-  MatTabsModule,
-  MatMenuModule
-} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 
 describe('DemoAppHeaderComponent', () => {
   let component: DemoAppHeaderComponent;

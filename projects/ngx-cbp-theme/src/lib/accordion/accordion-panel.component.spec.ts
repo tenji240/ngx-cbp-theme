@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CBPAccordionPanelComponent } from './accordion-panel.component';
-import {MatButtonModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 import {CBPAccordionComponent} from './accordion.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 

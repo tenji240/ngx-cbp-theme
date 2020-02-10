@@ -18,7 +18,7 @@ export class DemoButtonsComponent {
     };
 
     changed($event: any) {
-        console.log('demo toggle changed - ', $event);
+        // console.log('demo toggle changed - ', $event);
     }
     constructor() {
         delete this.toggle.something;

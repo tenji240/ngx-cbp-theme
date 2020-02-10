@@ -1,4 +1,4 @@
-<cbp-app-header>
+<cbp-app-header class="cbp-app-header cbp-toolbar">
 
   <div class="cbp-app-main-nav">
     <div fxShow="false" fxShow.gt-xs="true">
@@ -22,19 +22,19 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
             <mat-icon fontSet="fontawesome" fontIcon="fa-users"></mat-icon>
-            <span>Crew</span>
+            <span>My Crew</span>
           </button>
           <button mat-menu-item>
             <mat-icon fontSet="fontawesome" fontIcon="fa-people-carry"></mat-icon>
-            <span>Cargo</span>
+            <span>My Cargo</span>
           </button>
           <button mat-menu-item>
             <mat-icon fontSet="fontawesome" fontIcon="fa-truck"></mat-icon>
-            <span>Trucks</span>
+            <span>My Trucks</span>
           </button>
           <button mat-menu-item>
             <mat-icon fontSet="fontawesome" fontIcon="fa-warehouse"></mat-icon>
-            <span>Ports</span>
+            <span>My Ports</span>
           </button>
         </mat-menu>
       </div>
@@ -43,14 +43,43 @@
 
   <!-- NOTE: Contents are not rendering -->
   <div class="cbp-app-sub-content">
-    {{ companyName }}
+    <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
+      <div>
+        {{ companyName }}
+      </div>
+      <div>
+        <button mat-mini-fab color="primary">
+          <mat-icon fontSet="fontawesome" fontIcon="fa-plus"></mat-icon>
+        </button>
+        <button mat-flat-button [matMenuTriggerFor]="contextMenu">
+          Create
+          <mat-icon
+            aria-label="menu"
+            fontSet="fontawesome"
+            fontIcon="fa-caret-down">
+          </mat-icon>
+        </button>
+        <mat-menu #contextMenu="matMenu">
+          <button mat-menu-item>
+            <mat-icon fontSet="fontawesome" fontIcon="fa-users"></mat-icon>
+            <span>New Manifest</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon fontSet="fontawesome" fontIcon="fa-people-carry"></mat-icon>
+            <span>New Bill of Lading</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
   </div>
 </cbp-app-header>
 
 <!-- NOTE: Navigation Header Router Link isn't actually active though-->
 <ng-template #tabbedAppNav>
   <nav mat-tab-nav-bar>
-    <a mat-tab-link [active]="true" href="{{ link.link }}" *ngFor="let link of appNavigations">
+    <a mat-tab-link [active]="true" href="#" *ngFor="let link of appNavigations">
       {{link.name}}
     </a>
   </nav>

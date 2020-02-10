@@ -1,0 +1,151 @@
+// --------------------------------------------------
+// Standard Application Colors
+// --------------------------------------------------
+
+// Whites to Greys
+$white:                             #FFF;
+$white-outline:                     #f5f5f5;
+$white-offset:                      #DDD;
+$gray-base:                         #000;
+$gray-darker:                       #222;
+$gray-dark:                         #333;
+$gray:                              #555;
+$gray-mute:                         #999;
+$gray-medium:                       #808080;
+$gray-light:                        #aaa;
+$gray-lighter:                      #eeeeee;
+$gray-lightest:                     #f6f6f6;
+
+// transparent colors
+$transparent:                       rgba(0,0,0,0);
+$semitransparent-light:             rgba(0,0,0,.12);
+$semitransparent:                   rgba(0,0,0,.24);
+$semitransparent-dark:              rgba(0,0,0,.36);
+$semitransparent-darker:            rgba(0,0,0,.48);
+
+
+// Brand Colors
+$brand-primary:                     #00416A !default;
+$brand-success:                     #008000 !default;
+$brand-info:                        #1460aa !default;
+$brand-warning:                     #f09511 !default;
+$brand-danger:                      #a00000 !default;
+$brand-default:                     $white !default;
+$brand-live:                        lighten(#fac554, 15%)!default;
+
+// Custom Brand borders
+// TODO: Implement border colors on raised buttons
+$brand-primary-border:              #0A3055;
+$brand-success-border:              #134d13;
+$brand-danger-border:               #aa0000;
+$brand-warning-border:              #4a2e1f;
+$brand-info-border:                 #0f4880;
+$brand-default-border:              #adadad;
+$brand-live-border:                 darken($brand-live, 10%);
+$brand-default-highlight:           rgba(20,96,170,.1);
+
+// Brand subtle colors
+$brand-primary-subtle: #ecf1f4;
+$brand-success-subtle: #ecf5ec;
+$brand-info-subtle:    #edf3f9;
+$brand-warning-subtle: #fef7ed;
+$brand-danger-subtle:  #f8ecec;
+
+// Data Visualization Colors
+$data-red-dark:                     #600000;
+$data-red:                          $brand-danger;
+$data-red-light:                    #E00000;
+$data-red-subtle:                   #FAB2AA;
+
+$data-blue-dark:                    #003865;
+$data-blue:                         #004C97;
+$data-blue-light:                   #009CDE;
+$data-blue-subtle:                  #95D9FF;
+
+$data-green-dark:                   $brand-success-border; // uses the same hex code. be careful
+$data-green:                        $brand-success;
+$data-green-light:                  #1BAB00;
+$data-green-subtle:                 #C1E8B0;
+
+$data-purple-dark:                  #3C1053;
+$data-purple:                       #671E75;
+$data-purple-light:                 #BB16A3;
+$data-purple-subtle:                #C9B1D0;
+
+$data-yellow-dark:                  #A36900;
+$data-yellow:                       $brand-warning;
+$data-yellow-light:                 #F3CE37;
+$data-yellow-subtle:                #F3E69C;
+
+$data-gray-dark:                    $gray-base;
+$data-gray:                         #63666A;
+$data-gray-light:                   #A7A8AA;
+$data-gray-subtle:                  #D9D9D6;
+
+// Type Colors
+// -------------------------------------------------
+$headings-small-color:    $gray-light !default;
+$body-bg:                 $white !default;
+$text-color:              $gray-dark !default;
+$link-color:              $brand-primary !default;
+$link-hover-color:        darken($link-color, 15%) !default;
+$link-hover-decoration:   underline !default;       
+$brand-warning-text:      #A44900;
+$dark-primary-text:       $gray-darker;
+$light-primary-text:      $white;
+// -------------------------------------------------
+
+// Navbar Colors
+// NOTE: Move to specific component?
+// -------------------------------------------------
+$navbar-default-color:             $gray !default;
+$navbar-default-bg:                #f8f8f8 !default;
+$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
+
+$navbar-default-toggle-border-color:       $white-offset !default;
+
+// Navbar Inverted
+$navbar-inverse-color:             $white !default;
+$navbar-inverse-bg:                $brand-primary;
+$navbar-inverse-border:            $brand-primary;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg:           $white-offset !default;
+$navbar-default-toggle-icon-bar-bg:        #888 !default;
+$navbar-default-toggle-border-color:       $white-offset !default;
+
+// Inverted navbar toggle
+$navbar-inverse-toggle-hover-bg:            $gray-dark !default;
+$navbar-inverse-toggle-icon-bar-bg:         $white !default;
+$navbar-inverse-toggle-border-color:        $gray-dark !default;
+// -------------------------------------------------
+
+// Border color for table and cell borders
+$table-border-color: darken($gray-lighter, 10%) !default;
+
+// Button Colors
+$btn-default-color:                 $gray-darker; //--$text-color;
+$btn-default-bg:                    $brand-default;
+$btn-default-border:                darken($btn-default-bg, 20%);
+
+$btn-primary-color:                 $gray-lighter;
+$btn-primary-bg:                    $brand-primary;
+$btn-primary-border:                darken($btn-primary-bg, 9%);
+
+$btn-success-color:                 $gray-lighter;
+$btn-success-bg:                    $brand-success;
+$btn-success-border:                darken($btn-success-bg, 9%);
+
+$btn-info-color:                    $gray-lighter;
+$btn-info-bg:                       $brand-info;
+$btn-info-border:                   darken($btn-info-bg, 9%);
+
+$btn-warning-color:                 $brand-warning-text;
+$btn-warning-bg:                    $brand-warning;
+$btn-warning-border:                darken($btn-warning-bg, 9%);
+
+$btn-danger-color:                  $gray-lighter;
+$btn-danger-bg:                     $brand-danger;
+$btn-danger-border:                 darken($btn-danger-bg, 9%);
+
+$btn-link-disabled-color:           $gray-light !default;

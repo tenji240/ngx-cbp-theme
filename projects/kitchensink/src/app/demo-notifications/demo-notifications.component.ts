@@ -11,10 +11,10 @@ import { CBPNotification, CBPNotificationsService } from 'ngx-cbp-theme';
 })
 export class DemoNotificationsComponent implements OnInit, OnDestroy {
 
-  @ViewChild('successNotification') successContentRef: TemplateRef<any>;
-  @ViewChild('infoNotification') infoNotificationRef: TemplateRef<any>;
-  @ViewChild('warnNotification') warnNotificationRef: TemplateRef<any>;
-  @ViewChild('dangerNotification') dangerNotificationRef: TemplateRef<any>;
+  @ViewChild('successNotification', {read: TemplateRef, static: false}) successContentRef: TemplateRef<any>;
+  @ViewChild('infoNotification', {read: TemplateRef, static: false}) infoNotificationRef: TemplateRef<any>;
+  @ViewChild('warnNotification', {read: TemplateRef, static: false}) warnNotificationRef: TemplateRef<any>;
+  @ViewChild('dangerNotification', {read: TemplateRef, static: false}) dangerNotificationRef: TemplateRef<any>;
 
   private snoozingNotification: CBPNotification;
   private connectionLostNotification: CBPNotification;
@@ -45,7 +45,7 @@ export class DemoNotificationsComponent implements OnInit, OnDestroy {
     notification.content = this.infoNotificationRef;
     this.notificationService.notify(notification);
     notification.onClose(() => {
-      console.log('info closed');
+      // console.log('info closed');
     });
 
   }
@@ -79,7 +79,7 @@ export class DemoNotificationsComponent implements OnInit, OnDestroy {
    */
   viewComment() {
     this.notifyMe('Comment Viewed');
-    console.log('Comment Viewed');
+    // console.log('Comment Viewed');
   }
 
   /**
@@ -93,6 +93,7 @@ export class DemoNotificationsComponent implements OnInit, OnDestroy {
 
   /**
    * Various ways to interact with notification.
+   * !! Depreciated method used here
    */
   retryAndClose() {
     this.notifyMe('Connection Successful!');

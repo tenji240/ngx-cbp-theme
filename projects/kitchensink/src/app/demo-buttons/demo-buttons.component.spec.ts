@@ -5,7 +5,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {DemoButtonsComponent} from './demo-buttons.component';
 import {CBPButtonsModule} from 'ngx-cbp-theme';
 import {FormsModule} from '@angular/forms';
-import {MatCheckboxModule, MatCardModule} from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 describe('DemoButtonsComponent', () => {
     beforeEach(async(() => {

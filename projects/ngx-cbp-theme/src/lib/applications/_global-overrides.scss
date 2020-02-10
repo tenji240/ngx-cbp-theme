@@ -1,8 +1,6 @@
 @import '../variables';
 
 .inverse {
-
-
   .mat-form-field-label {
     color: $navbar-default-color;
   }
@@ -19,7 +17,8 @@
   .mat-form-field {
     width: 100%;
   }
-
-
 }
 
+.mat-option, .mat-menu-item {
+  @include selectionFocusState();
+}

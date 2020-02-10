@@ -7,13 +7,11 @@ import {
 } from '@angular/core/testing';
 
 import { CBPApplicationsMenuComponent } from './apps-menu.component';
-import {
-  MatDividerModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatMenuModule
-} from '@angular/material';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { CBPProgressModule } from '../../progress/progress.module';
 import { CBPPipesModule } from '../../pipes/pipes.module';
 import { FlexLayoutModule } from '@angular/flex-layout';

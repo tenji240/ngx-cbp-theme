@@ -8,7 +8,7 @@ import {CBPFeedbackService} from '../feedback/feedback.service';
 @Injectable()
 export class MockFeedbackService implements CBPFeedbackService {
     handleFeedback(): void {
-        console.log('mock feedback clicked');
+        // console.log('mock feedback clicked');
     }
 
 

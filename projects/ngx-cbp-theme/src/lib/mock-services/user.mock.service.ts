@@ -27,6 +27,8 @@ export class MockUserService extends CBPUserService {
       const user = new CBPUser();
       user.firstName = 'John';
       user.lastName = 'Doe';
+      user.carrierCode = 'ZZZZ';
+      user.shippingCompany = 'Based Shipping';
       user.preferences = {
         favoriteAppIds: this._randomlyGetFavoritAppId()
       };
@@ -40,7 +42,7 @@ export class MockUserService extends CBPUserService {
   logout(): void {
     this.loggedIn = false;
     this.subject.next(null);
-    console.log('mock logout');
+    // console.log('mock logout');
   }
 
   isLoggedIn(): boolean {

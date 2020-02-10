@@ -1,0 +1,30 @@
+@import '../../../../../dist/ngx-cbp-theme/styles/variables';
+@import '../../../../../dist/ngx-cbp-theme/styles/theme/header';
+
+// :)
+@include cbp-ngx-header();
+
+.demo-header {
+  z-index: $zindex-appbar;
+  position: fixed;
+  top: 50px;
+  width: 100%;
+}
+
+.demo-user-menu {
+  z-index: $zindex-appbar + 20;
+}
+
+.cbp-app-main-nav {
+  .mat-tab-link {
+    font-size: $font-size-base !important;
+    min-width: 120px;
+    padding: 0px;
+  }
+}
+
+.page-header {
+  font-size: $font-size-h5;
+  font-weight: bold;
+}
+

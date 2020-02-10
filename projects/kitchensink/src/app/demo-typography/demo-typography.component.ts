@@ -19,7 +19,7 @@ export class DemoTypographyComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subscriptions.push(this.toolbarState.scrollState.pipe(debounceTime(100)).subscribe((state: any) => {
             this.scrollState = state;
-            console.log('demo toolbar state ', state);
+            // console.log('demo toolbar state ', state);
         }));
     }
     ngOnDestroy() {

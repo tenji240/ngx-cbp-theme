@@ -1,17 +1,6 @@
 <!--This is "THE" Kitchen Sink Demo -->
 <cbp-root>
 
-  <!-- TODO: Refactor all of these darn flags-->
-  <cbp-header
-    [cbpFeedbackLinkExclude]="true"
-    [cbpAppsMenuExclude]="true"
-    [cbpAppsMenuSimple]="true"
-    [cbpAppsMenuName]="'Manifest Trade Portal'">
-    <cbp-user-menu>
-      <div class="mat-menu-item" (click)="myPreferences()" cbp-user-menu-item>Preferences</div>
-    </cbp-user-menu>
-  </cbp-header>
-
   <!--
     Example:
     Hint:
@@ -23,11 +12,31 @@
         </cbp-user-menu>
     </cbp-header>
      -->
+  
 
-  <!-- Your own App header built from <app-header> -->
+  <!--
+    <cbp-header class="cbp-header" [cbpFeedbackLinkExclude]="true" [cbpAppsMenuExclude]="true" [cbpAppsMenuSimple]="true"
+    [cbpAppsMenuName]="'Manifest Trade Portal'">
+    <cbp-user-menu [cbpNotificationsCount]=12 [notificationClick]=activateNotification.bind(this)
+      [customMenuToggleEvent]=myEvent>
+      <div class="mat-menu-item" (click)="$event.stopPropagation();" cbp-user-menu-item>
+        <mat-form-field>
+          <mat-label>Favorite food</mat-label>
+          <mat-select (selectionChange)="change($event)">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="mat-menu-item" (click)="myPreferences()" cbp-user-menu-item>My Preferences</div>
+    </cbp-user-menu>
+  </cbp-header>
+
   <demo-demo-app-header></demo-demo-app-header>
+  -->
 
-
+  <demo-header-beta></demo-header-beta>
   <!-- Notifications area - System Notifications are displayed here -->
   <cbp-notifications-overlay></cbp-notifications-overlay>
 
@@ -36,5 +45,6 @@
     <demo-buttons></demo-buttons>
     <demo-notifications></demo-notifications>
     <demo-cbp-accordion></demo-cbp-accordion>
+    <demo-table></demo-table>
   </div>
 </cbp-root>

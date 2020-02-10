@@ -4,7 +4,8 @@ import {
   OnDestroy,
   OnInit,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
+  Input
 } from '@angular/core';
 import {
   CBP_USER_SERVICE,
@@ -12,12 +13,11 @@ import {
   CBPUserService
 } from '../user';
 import { Subscription } from 'rxjs';
-import { MatMenuTrigger } from '@angular/material';
+import { MatMenuTrigger } from '@angular/material/menu';
 import {
   CBPToolbarState,
   CBP_HEADER_STATE
 } from '../../header/cbp-toolbar/cbp-toolbar-state';
-
 
 @Component({
   selector: 'cbp-user-menu, [cbp-user-menu], .cbp-user-menu',
@@ -26,23 +26,29 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class CBPUserMenuComponent implements OnInit, OnDestroy {
+  @Input() set customMenuToggleEvent(e: any) { // input setter to trigger a menu toggle
+    if (e !== null && this.userMenuTrigger) {
+      this.toggleMenu(null);
+    }
+  }
+  @Input() cbpNotificationsCount: number; // Number of notifications Count consumed by the header
+  @Input() notificationClick: () => any; // takes in a function cal/
+  @ViewChild(MatMenuTrigger, {static: false}) userMenuTrigger: MatMenuTrigger;
 
-  userMenuExpanded = false;
-  user: CBPUser;
-  isLoggedIn = false;
-  userDataLoaded = false;
-  error: any;
-
+  public userMenuExpanded = false;
+  public user: CBPUser;
+  public isLoggedIn = false;
+  public userDataLoaded = false;
+  public error: any;
   private subscriptions = new Subscription();
-
-  @ViewChild(MatMenuTrigger) userMenuTrigger: MatMenuTrigger;
 
   get toolbarIsExpanded(): boolean {
     return this.toolbarState.toolbarIsExpanded.getValue();
   }
 
   constructor(@Inject(CBP_USER_SERVICE) private userService: CBPUserService,
-    @Inject(CBP_HEADER_STATE) public toolbarState: CBPToolbarState) {}
+              @Inject(CBP_HEADER_STATE) public toolbarState: CBPToolbarState) {
+  }
 
 
   get loginProgress(): boolean {
@@ -53,7 +59,7 @@ export class CBPUserMenuComponent implements OnInit, OnDestroy {
     this.userService.loginInProgress = progress;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.subscriptions.add(this.toolbarState.hasToolbarMenu.subscribe(() => {
       if (this.userMenuTrigger && this.userMenuTrigger.menu) {
         this.userMenuExpanded = false;
@@ -91,35 +97,45 @@ export class CBPUserMenuComponent implements OnInit, OnDestroy {
 
   }
 
-  login($event: any) {
+  public login($event: any): void {
     this.loginProgress = true;
     this.isLoggedIn = false;
     this.userService.login();
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
     this.user = undefined;
     this.userDataLoaded = false;
   }
 
-  logout(): void {
+  public logout(): void {
     this.isLoggedIn = false;
     this.userService.logout();
     this.userMenuExpanded = false;
   }
 
-  toggleMenu($event: Event) {
+  public displayUserBar(): string {
+    return this.user ?
+      `${this.user.firstName} ${this.user.lastName}
+       ${this.user.carrierCode ? this.user.carrierCode : ''}  ${this.user.shippingCompany ? this.user.shippingCompany : ''}` :
+       'Loading User';
+  }
+
+  public toggleMenu($event: Event): void {
     if (!this.isLoggedIn || !this.userDataLoaded) {
       return;
     }
-    if (this.toolbarState.toolbarIsExpanded.getValue()) {
+    if (this.toolbarState && this.toolbarState.toolbarIsExpanded.value) {
       this.userMenuExpanded = !this.userMenuExpanded;
-      $event.stopPropagation();
+      if ($event) {
+        $event.stopPropagation();
+      }
     } else {
       if (this.userMenuTrigger) {
         this.userMenuTrigger.toggleMenu();
       }
     }
   }
+
 }

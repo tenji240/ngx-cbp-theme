@@ -3,7 +3,8 @@ import {CommonModule} from '@angular/common';
 import {CBPNotificationComponent} from './cbp-notification/cbp-notification.component';
 import {CBPNotificationsOverlayComponent} from './cbp-notifications-overlay/cbp-notifications-overlay.component';
 import {CBPNotificationsService} from './cbp-notifications.service';
-import {MatButtonModule, MatIconModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import {PortalModule} from '@angular/cdk/portal';
 
 @NgModule({

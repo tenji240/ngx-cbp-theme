@@ -9,6 +9,7 @@ import {DemoTypographyComponent} from './demo-typography/demo-typography.compone
 
 
 import {DemoButtonsModule} from './demo-buttons/demo-buttons.module';
+import {DemoTableModule} from './demo-table/demo-table.module';
 import {DemoAppHeaderModule} from './demo-app-header/demo-app-header.module';
 import {DemoNotificationsModule} from './demo-notifications/demo-notifications.module';
 import {
@@ -22,7 +23,7 @@ import {
   CBP_USER_SERVICE,
   CBP_APPLICATIONS_SERVICE
 } from 'ngx-cbp-theme';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 
 describe('DemoAppComponent', () => {
   beforeEach(async(() => {
@@ -34,6 +35,7 @@ describe('DemoAppComponent', () => {
         CBPAppHeaderModule,
         CBPNotificationsModule,
         DemoButtonsModule,
+        DemoTableModule,
         DemoAppHeaderModule,
         DemoNotificationsModule,
         MatCardModule

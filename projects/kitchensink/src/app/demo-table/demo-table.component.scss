@@ -1,0 +1,17 @@
+.mat-card {
+  margin: 20px auto;
+}
+
+table {
+  width: 100%;
+  
+  tr.mat-row {
+    transition-property: background-color;
+    transition-duration: 0.25s;
+    background-color: white;
+    height: 38px;
+    &:hover {
+      background-color: #edf3f9;
+    }
+  }
+}

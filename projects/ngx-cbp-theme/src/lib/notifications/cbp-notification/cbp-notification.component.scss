@@ -1,5 +1,9 @@
 @import '../../variables';
 
+// HACK
+$alert-padding: 6px !default;
+$modal-inner-padding: 15px !default;
+
 .toast {
   position: relative;
   border: 1px solid #ddd;

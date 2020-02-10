@@ -1,0 +1,360 @@
+@import '../variables';
+@import 'mixins';
+
+@mixin cbp-508-hover-focus-dotted() {
+
+  &:hover,
+  &:focus {
+    outline: thin dotted;
+    outline-offset: -2px;
+    text-decoration: none;
+  }
+}
+
+// Header
+@mixin cbp-navbar-item-default-mixin() {
+  .cbp-navbar-item-default {
+    font-size: 15px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    vertical-align: middle;
+    height: $navbar-height;
+    padding: 0 16px;
+  }
+}
+
+@mixin cbp-navbar-item-mixin() {
+  @include cbp-navbar-item-default-mixin();
+
+  .cbp-navbar-item {
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      outline: thin dotted;
+      outline-offset: -2px;
+      text-decoration: none;
+    }
+
+    @extend .cbp-navbar-item-default;
+  }
+}
+
+@mixin cbp-toolbar-expansion-container-mixin() {
+  .cbp-toolbar-expansion-container {
+    &:hover {
+      outline: none;
+    }
+
+    .cbp-toolbar-expansion {
+      &:hover {
+        outline: none;
+      }
+
+      .cbp-toolbar-expansion-icon {
+        border: 1px solid $navbar-default-toggle-border-color;
+        position: relative;
+        margin: 0;
+        cursor: inherit;
+        padding: 9px 10px;
+        border-radius: 2px;
+        min-width: inherit;
+        background-color: $navbar-default-bg;
+
+        &:hover {
+          background-color: $navbar-default-toggle-hover-bg;
+        }
+
+        &:focus {
+          border-color: $navbar-default-toggle-border-color;
+          outline: 1px dotted lighten($brand-default, 0.25) !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin cbp-icon-bar-mixin() {
+  .icon-bar+.icon-bar {
+    margin-top: 4px;
+  }
+
+  .icon-bar {
+    background-color: $navbar-default-toggle-icon-bar-bg;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+  }
+}
+
+// CBP Header
+@mixin cbp-header-mixin() {
+  .cbp-header {
+    z-index: $zindex-navbar;
+
+    .cbp-toolbar .cbp-toolbar-row {
+      padding: 0px;
+      height: $navbar-height;
+      background-color: $navbar-inverse-bg;
+      color: $navbar-inverse-color;
+      border-bottom-color: darken($navbar-inverse-border, 2%);
+      right: 0;
+      left: 0;
+    }
+
+
+    .cbp-toolbar-expansion-container {
+      .cbp-toolbar-expansion {
+        .cbp-toolbar-expansion-icon {
+          border: 1px solid darken($navbar-inverse-border, 4%);
+          background-color: $navbar-inverse-bg;
+
+          &:hover {
+            background-color: $navbar-inverse-toggle-hover-bg;
+          }
+
+          &:focus {
+            border-color: $navbar-inverse-toggle-border-color;
+            outline: 1px dotted lighten($brand-info, 0.25) !important;
+          }
+        }
+      }
+    }
+
+    .icon-bar {
+      background-color: $navbar-inverse-toggle-icon-bar-bg;
+    }
+
+    .mat-toolbar h1 {
+      font-weight: inherit;
+    }
+  }
+}
+
+@mixin cbp-brand-nav-mixin() {
+  .cbp-brand-nav {
+    padding: $brand-padding;
+    font-size: $font-size-h5;
+    transition: color 200ms ease-in-out;
+    height: $navbar-height;
+    cursor: pointer;
+
+    // 508 here
+    @include cbp-508-hover-focus-dotted();
+
+    .cbp-brand {
+      font-size: $font-size-h3;
+      line-height: 21px;
+      color: $white;
+    }
+
+    .dhs-brand {
+      line-height: 14px;
+      margin: 0;
+      font-size: $font-size-smallest;
+      font-style: italic;
+    }
+  }
+
+  .cbp-current-application-name-container {
+    // 508 here
+    @include cbp-508-hover-focus-dotted();
+  }
+}
+
+@mixin cbp-header-theme-mixin() {
+  .cbp-theme .cbp-toolbar {
+    .mat-button {
+      border: inherit;
+      font-size: 15px;
+      height: $navbar-height - 2;
+
+      .mat-button-wrapper {
+        font-weight: $font-weight-base;
+      }
+
+      .mat-icon {
+        height: inherit;
+        width: inherit;
+        padding: 2px;
+      }
+    }
+
+    .mat-icon {
+      width: inherit;
+      padding: 0 4px;
+    }
+  }
+}
+
+// CBP App Header
+@mixin cbp-apps-header-mixin() {
+  .cbp-toolbar {
+    border-bottom-color: $navbar-default-border;
+    height: $navbar-appheader-height + 1px;
+
+    .cbp-toolbar-row {
+      padding: 0px;
+      z-index: $zindex-appbar;
+      height: $navbar-appheader-height + 1px;
+      background-color: $white;
+      border-bottom: 2px solid $gray-lightest;
+    }
+
+    .cbp-brand-nav-container {
+      cursor: default;
+      @include cbp-508-hover-focus-dotted();
+    }
+  }
+}
+
+@mixin cbp-apps-expansion-container-mixin() {
+  .cbp-toolbar-expansion {
+    .cbp-toolbar-expansion-icon {
+      border: 1px solid darken($navbar-default-border, 4%);
+      background-color: $navbar-default-bg;
+
+      &:hover {
+        background-color: $navbar-default-toggle-hover-bg;
+      }
+
+      &:focus {
+        border-color: $navbar-default-toggle-border-color;
+        outline: 1px dotted darken($brand-default-border, 0.25) !important;
+      }
+    }
+  }
+}
+
+// Toolbar
+@mixin cbp-toolbar-mixin() {
+  @include cbp-navbar-item-mixin();
+
+  .cbp-toolbar {
+    width: 100%;
+
+    .cbp-toolbar-row {
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .cbp-toolbar-expansion {
+      padding: 4px;
+    }
+
+    .cbp-toolbar-expansion-panel {
+      background-color: $navbar-inverse-bg;
+      color: $navbar-inverse-color;
+      border-bottom-color: darken($navbar-inverse-border, 2%);
+      z-index: $zindex-appbar + 100;
+      width: 100%;
+      left: 0;
+
+      .mat-menu-item {
+        cursor: pointer;
+        @extend .cbp-navbar-item;
+      }
+
+      .mat-menu-item .cbp-applications-link {
+        text-decoration: none;
+        color: $gray-dark;
+        overflow: inherit;
+        text-overflow: inherit;
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .cbp-sub-toolbar {
+      padding: 10px 20px;
+      font-size: $font-size-h6;
+      background-color: $white;
+      border-bottom: 1px solid $navbar-default-border;
+    }
+
+    .mat-tab-nav-bar {
+      border-bottom: none;
+
+      .mat-tab-link.mat-menu-item {
+        min-width: unset;
+        padding: 0 15px;
+        color: $brand-primary;
+
+        &.cbp-active-link span, &:focus span {
+          &::after {
+            content: '';
+            position: relative;
+            display: block;
+            bottom: 2px;
+            height: 2px;
+            background-color: $brand-primary;
+
+            @include expandOut();
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin cbp-brand-nav-container-mixin() {
+  .cbp-brand-nav-container {
+    display: block;
+    @extend .cbp-navbar-item-default;
+    padding: inherit;
+  }
+}
+
+@mixin cbp-toolbar-main-nav-container-mixin() {
+  .cbp-toolbar-main-nav-container {
+    overflow: hidden;
+
+    .cbp-current-application {
+      border: none;
+      @include cbp-508-hover-focus-dotted();
+    }
+  }
+}
+
+@mixin cbp-user-menu() {
+  mat-icon {
+    line-height: 1.6;
+  }
+
+  .cbp-toolbar-username {
+    padding: 0px 8px;
+  }
+}
+
+@mixin cbp-sub-menu() {
+  .cbp-sub-header {
+    z-index: $zindex-appbar;
+    width: 100%;
+
+    .cbp-toolbar-row {
+      padding: 0px 16px;
+    }
+  }
+}
+
+// the only CSS you'll ever need to import from header. that and variables I think;
+@mixin cbp-ngx-header() {
+  @include cbp-navbar-item-mixin();
+  @include cbp-toolbar-expansion-container-mixin();
+  @include cbp-icon-bar-mixin();
+  @include cbp-header-mixin();
+  @include cbp-brand-nav-mixin();
+  @include cbp-header-theme-mixin();
+  @include cbp-apps-header-mixin();
+  @include cbp-apps-expansion-container-mixin();
+  @include cbp-toolbar-mixin();
+  @include cbp-brand-nav-container-mixin();
+  @include cbp-toolbar-main-nav-container-mixin();
+  @include cbp-user-menu();
+  @include cbp-sub-menu();
+}

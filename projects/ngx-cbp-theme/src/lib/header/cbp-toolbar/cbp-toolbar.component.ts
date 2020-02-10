@@ -2,7 +2,7 @@ import {Component, EventEmitter, HostBinding, HostListener, Input, OnDestroy, On
 import {CBPScrollShrinkAnimator} from './cbp-scrollshrink-animator';
 import {MediaChange, MediaObserver} from '@angular/flex-layout';
 import {Subscription} from 'rxjs';
-import {matSelectAnimations} from '@angular/material';
+import { matSelectAnimations } from '@angular/material/select';
 import {CBPToolbarState} from './cbp-toolbar-state';
 
 @Component({
@@ -32,11 +32,15 @@ export class CBPToolbarComponent implements OnInit, OnDestroy {
 
 
   set isToolbarExpanded(expanded: boolean) {
-    this.toolbarState.toolbarIsExpanded.next(expanded);
+    if (this.toolbarState) {
+      // console.log('setting toolbar state:: ', this.toolbarState, expanded);
+      this.toolbarState.toolbarIsExpanded.next(expanded);
+    }
   }
 
   get isToolbarExpanded(): boolean {
-    return this.toolbarState.toolbarIsExpanded.getValue();
+    // console.log('getting toolbar state:: ', this.toolbarState);
+    return this.toolbarState ? this.toolbarState.toolbarIsExpanded.value : false;
   }
 
   set hasToolbarMenu(has: boolean) {
@@ -66,7 +70,8 @@ export class CBPToolbarComponent implements OnInit, OnDestroy {
 
   @HostListener('window:scroll', ['$event'])
   scrolled($event: any) {
-    if (!this.toolbarState.scrollShrinkSuspended) {
+    // console.log('XXXX SCROLL LOG:: ', $event, this.toolbarState);
+    if (this.toolbarState && !this.toolbarState.scrollShrinkSuspended) {
       this.cbpToolbarScrollState = window.pageYOffset <= 50 ? 'initial' : 'up';
       this.toolbarState.scrollState.next(this.cbpToolbarScrollState);
       this.isToolbarExpanded = false;

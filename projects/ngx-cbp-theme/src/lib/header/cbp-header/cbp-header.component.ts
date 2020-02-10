@@ -33,9 +33,9 @@ export class CBPHeaderComponent {
   @Input() cbpAppsMenuSimple: boolean;       // if true, only show the simple version of the apps-menu
   @Input() cbpAppsMenuName: string;          // the name of the CBP String passed in
 
-  @ContentChild(CBPApplicationsMenuComponent) cbpAppsMenu: CBPApplicationsMenuComponent;
-  @ContentChild(CBPFeedbackLinkComponent) cbpFeedbackLink: CBPFeedbackLinkComponent;
-  @ContentChild(CBPUserMenuComponent) cbpUserMenu: CBPUserMenuComponent;
+  @ContentChild(CBPApplicationsMenuComponent, null) cbpAppsMenu: CBPApplicationsMenuComponent;
+  @ContentChild(CBPFeedbackLinkComponent, null) cbpFeedbackLink: CBPFeedbackLinkComponent;
+  @ContentChild(CBPUserMenuComponent, null) cbpUserMenu: CBPUserMenuComponent;
 
   constructor(@Inject(CBP_HEADER_STATE) state: CBPToolbarState,
               @Inject(CBP_APPLICATIONS_SERVICE) public applicationsService?: CBPApplicationsService) {

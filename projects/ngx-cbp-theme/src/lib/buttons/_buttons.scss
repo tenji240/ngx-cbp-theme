@@ -1,9 +1,10 @@
 @import '../variables';
+@import '../theme/mixins';
 
 .cbp-theme {
 
   .mat-button-wrapper {
-    font-weight: 400;
+    font-weight: $font-weight-base;
     margin: 2px;
   }
 
@@ -13,10 +14,51 @@
     min-width: inherit;
   }
 
-  .mat-button, .mat-raised-button[color="default"]{
-    border: 1px solid $btn-default-border;
+  .mat-button, .mat-raised-button, .mat-flat-button, .mat-stroked-button, .mat-button-toggle-button {
+    @include outlineFocusState();
+
+    &[color=primary] {
+      @include outlineFocusState($white, $brand-primary);
+    }
+    &[color=warn] {
+      @include outlineFocusState($white, $brand-danger);
+    }
   }
-  
+
+  .mat-icon-button, .mat-slide-toggle, .mat-checkbox, .mat-radio-button {
+    &.cdk-focused.cdk-keyboard-focused {
+
+      .mat-button-wrapper, .mat-radio-container, .mat-checkbox-inner-container, .mat-slide-toggle-thumb {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 30px;
+          height: 30px;
+          top: calc(50% - 15px);
+          left: calc(50% - 15px);
+          border-radius: 50%;
+          border: 1px dotted $brand-info;
+          background-color: rgba(0,0,0,.12);
+          box-sizing: border-box;
+        }
+      }
+
+      .mat-button-focus-overlay,
+      .mat-ripple,
+      .mat-ripple-element,
+      .mat-ripple-element.mat-slide-toggle-persistent-ripple {
+        opacity: 0;
+      }
+    }
+  }
+
+
+  .mat-button, .mat-raised-button[color="default"]{
+    border: 1px solid darken($brand-default, 20%);
+  }
+
   button[disabled][disabled],
   .mat-button[disabled],
   .mat-raised-button.mat-primary[disabled],
@@ -37,6 +79,36 @@
     cursor: not-allowed;
   }
 
+  .mat-slide-toggle {
+    vertical-align: middle;
+  }
+
+  .mat-slide-toggle-bar {
+    height: 18px !important;
+    width: 30px !important;
+    border-radius: 10px !important;
+    background-color: $semitransparent-darker;
+  }
+  .mat-slide-toggle-thumb-container {
+    transform: translate3d(3px, 6px, 0) !important;
+  }
+  .mat-slide-toggle-thumb {
+    height: 12px !important;
+    width: 12px !important;
+    background-color: $gray-lightest;
+  }
+
+  .mat-slide-toggle.mat-checked {
+    .mat-slide-toggle-bar {
+      background-color: $brand-info;
+    }
+    .mat-slide-toggle-thumb-container {
+      transform: translate3d(15px, 6px, 0) !important;
+    }
+    .mat-slide-toggle-thumb {
+      background-color: $gray-lightest;
+    }
+  }
 }
 
 .cbp-link-button {
@@ -47,4 +119,3 @@
     text-decoration: underline;
   }
 }
-

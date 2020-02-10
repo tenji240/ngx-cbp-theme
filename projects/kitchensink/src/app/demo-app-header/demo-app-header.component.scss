@@ -16,7 +16,29 @@
 }
 
 .cbp-subtoolbar {
-  font-weight: 400;
+  font-weight: $font-weight-base;
+}
+
+.mat-mini-fab {
+  width: 30px;
+  height: 30px;
+  margin-right: 4px;
+  position: relative;
+  top: 7px;
+
+  .mat-icon {
+    padding: 0;
+    position: relative;
+    bottom: 2px;
+  }
+}
+
+.mat-flat-button {
+  padding: 0px 4px;
+  .mat-icon {
+    position: relative;
+    top: 4px;
+  }
 }
 
 cbp-app-main-nav .app-stacked-nav {

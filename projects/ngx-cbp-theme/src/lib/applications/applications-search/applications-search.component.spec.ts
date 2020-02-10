@@ -1,7 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CBPApplicationsSearchComponent } from './applications-search.component';
-import {MatDividerModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CBP_APPLICATIONS_SERVICE} from '../cbp-applications-service';
 import {MockApplicationsService} from '../../mock-services/applications.mock.service';

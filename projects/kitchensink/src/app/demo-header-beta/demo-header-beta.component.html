@@ -1,0 +1,89 @@
+<div class="demo-header" [@cbpToolbarScrollState]="cbpToolbarScrollState">
+  <div class="cbp-header">
+    <div class="cbp-toolbar">
+      <mat-toolbar class="cbp-toolbar-row">
+        <!-- Holds the CBP Brand -->
+        <div class="cbp-brand-nav cbp-toolbar-title" fxFlexAlign="stretch" fxLayout="row">
+          <div fxFlexAlign="center" fxLayout="column" fxLayoutAlign="start start">
+            <h1 class="cbp-brand" fxShow="false" fxShow.gt-sm>U.S. Customs &amp; Border Protection</h1>
+            <div class="cbp-brand-short" fxShow="false" fxShow.lt-md>U.S. CBP</div>
+            <div class="dhs-brand" fxShow="false" fxShow.gt-sm>U.S. Department of Homeland Security</div>
+          </div>
+        </div>
+
+        <div class="cbp-toolbar-main-nav-container">
+          <div fxFlex="auto" class="cbp-toolbar-main-nav">
+            <button class="mat-button cbp-current-application">
+              Manifest Trade Portal
+            </button>
+          </div>
+        </div>
+
+        <div class="cbp-toolbar-right-nav-container" fxFlex="auto">
+          <div fxLayout="column" fxLayoutAlign="end stretch">
+            <div class="cbp-toolbar-right-nav" fxFlexAlign.gt-xs="end" fxLayout.gt-xs="row" fxLayout.lt-sm="column">
+              <div fxFlex="auto" class="cbp-user-navitem">
+                <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">
+                  <mat-icon fontSet="fontawesome" fontIcon="fa-user"></mat-icon>
+                  <span class="cbp-toolbar-username" fxShow="false" fxShow.gt-xs>
+                    Martin Luther King BDDD
+                  </span>
+                  <mat-icon fontSet="fontawesome" fontIcon="fa-caret-down"></mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" class="demo-user-menu">
+                  <div class="mat-menu-item cbp-user-menu-item" (click)="$event.stopPropagation();">
+                    <mat-form-field>
+                      <mat-label>Favorite food</mat-label>
+                      <mat-select (selectionChange)="change($event)">
+                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                          {{food.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <button mat-menu-item>
+                    Other Menu Option
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon fontSet="fontawesome" fontIcon="fa-sign-out-alt"></mat-icon>
+                    Logout
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+
+  <div class="cbp-app-header">
+    <div class="cbp-toolbar">
+      <mat-toolbar class="cbp-toolbar-row">
+        <div class="cbp-app-main-nav">
+          <div>
+            <nav mat-tab-nav-bar>
+              <a mat-tab-link mat-menu-item> <span>Dashboard</span> </a>
+              <a mat-tab-link mat-menu-item> <span>Manifest</span> </a>
+              <a mat-tab-link mat-menu-item> <span>Bill of Lading</span> </a>
+              <a mat-tab-link mat-menu-item> <span>Account</span> </a>
+            </nav>
+          </div>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+
+  <div class="cbp-sub-header">
+    <div class="cbp-toolbar">
+      <mat-toolbar class="cbp-toolbar-row" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex fxLayoutAlign="start start">
+          <h5 class="page-header">Kitchen Sink</h5>
+        </div>
+        <div fxFlex fxLayoutAlign="end end">
+          <button mat-flat-button color="primary">Create</button>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+</div>

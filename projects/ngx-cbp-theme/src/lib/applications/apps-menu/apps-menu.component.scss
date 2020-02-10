@@ -1,5 +1,8 @@
 @import '../../variables';
 
+// HACK
+$box-padding: 10px;
+
 .cbp-current-application {
   height: $navbar-height;
 }
