@@ -1,6 +1,11 @@
-# NGX CBP Theme [DEPRECEATED - NO LONGER MAINTAINED]
+# NGX CBP Theme
 
-Angular native artifacts for consuming [CBP Theme](https://github.com/tenji240/cbp-theme) for Angular 5/6/7/next applications.
+[![npm version](https://badge.fury.io/js/ngx-cbp-theme.svg)](https://www.npmjs.com/package/ngx-cbp-theme)
+[![build Status](https://travis-ci.org/US-CBP/ngx-cbp-theme.svg?branch=master)](https://travis-ci.org/US-CBP/ngx-cbp-theme)
+[![dependencies Status](https://david-dm.org/us-cbp/ngx-cbp-theme/status.svg)](https://david-dm.org/us-cbp/ngx-cbp-theme)
+[![devDependencies Status](https://david-dm.org/us-cbp/ngx-cbp-theme/dev-status.svg)](https://david-dm.org/us-cbp/ngx-cbp-theme?type=dev)
+
+Angular native artifacts for consuming [CBP Theme](https://github.com/US-CBP/cbp-theme) for Angular 5/6/7/next applications.
 ___
 [![Kitchen Sink](https://us-cbp.github.io/ngx-cbp-theme/assets/kitchen-sink-preview.png)](https://us-cbp.github.io/ngx-cbp-theme/assets/kitchen-sink-preview.png)
 ___
@@ -80,23 +85,23 @@ $ npm install --save rxjs-compat
 
 ```json
 "depenencies": {
-  "@angular/animations": "~7.2.0",
-  "@angular/cdk": "^7.2.0",
-  "@angular/common": "~7.2.0",
-  "@angular/compiler": "~7.2.0",
-  "@angular/core": "~7.2.0",
-  "@angular/forms": "~7.2.0",
-  "@angular/material": "^7.2.0",
-  "@angular/platform-browser": "~7.2.0",
-  "@angular/platform-browser-dynamic": "~7.2.0",
-  "@angular/router": "~7.2.0",
+  "@angular/animations": "~8.0.0",
+  "@angular/cdk": "^8.0.0",
+  "@angular/common": "~8.0.0",
+  "@angular/compiler": "~8.0.0",
+  "@angular/core": "~8.0.0",
+  "@angular/forms": "~8.0.0",
+  "@angular/material": "^8.0.0",
+  "@angular/platform-browser": "~8.0.0",
+  "@angular/platform-browser-dynamic": "~8.0.0",
+  "@angular/router": "~8.0.0",
   ...
 }
 "devDependencies" : {
   "@angular-devkit/build-angular": "^0.12.2",
-  "@angular/cli": "~7.2.0",
-  "@angular/compiler-cli": "~7.2.0",
-  "@angular/language-service": "~7.2.0",
+  "@angular/cli": "~8.0.0",
+  "@angular/compiler-cli": "~8.0.0",
+  "@angular/language-service": "~8.0.0",
   ...
 }
 ```

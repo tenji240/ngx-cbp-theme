@@ -18,7 +18,7 @@ export class DemoNotificationsComponent implements OnDestroy {
   @ViewChild('warnNotification', {read: TemplateRef, static: false}) warnNotificationRef: TemplateRef<any>;
   @ViewChild('dangerNotification', {read: TemplateRef, static: false}) dangerNotificationRef: TemplateRef<any>;
 
-  @ViewChild('block2') blockEl: ElementRef;
+  @ViewChild('block2', {read: ElementRef, static: false}) blockEl: ElementRef;
   private snoozingNotification: CBPNotification;
   private connectionLostNotification: CBPNotification;
   dangerShow = true;

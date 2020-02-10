@@ -1,5 +1,4 @@
 <cbp-app-header>
-
   <div class="cbp-app-title">
     <h2 class="app-title" ngClass.gt-xs="vertical-divider">
       Kitchen Sink
@@ -20,59 +19,18 @@
     <div ngClass.gt-xs="app-right-nav-items" ngClass.lt-sm="app-stacked-nav">
       <div class="cbp-navbar-item">
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon
-            aria-label="menu"
-            fontSet="fontawesome"
-            fontIcon="fa-ellipsis-v">
-          </mat-icon>
+          <mat-icon aria-label="print" fontSet="fontawesome" fontIcon="fa-print"></mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>
-            <mat-icon fontSet="fontawesome" fontIcon="fa-users"></mat-icon>
-            <span>My Crew</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon fontSet="fontawesome" fontIcon="fa-people-carry"></mat-icon>
-            <span>My Cargo</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon fontSet="fontawesome" fontIcon="fa-truck"></mat-icon>
-            <span>My Trucks</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon fontSet="fontawesome" fontIcon="fa-warehouse"></mat-icon>
-            <span>My Ports</span>
-          </button>
-        </mat-menu>
       </div>
       <div class="cbp-navbar-item">
         <button mat-icon-button>
           <mat-icon aria-label="wifi" fontSet="fontawesome" fontIcon="fa-wifi"></mat-icon>
         </button>
-        <button mat-flat-button [matMenuTriggerFor]="contextMenu">
-          Create
-          <mat-icon
-            aria-label="menu"
-            fontSet="fontawesome"
-            fontIcon="fa-caret-down">
-          </mat-icon>
-        </button>
-        <mat-menu #contextMenu="matMenu">
-          <button mat-menu-item>
-            <mat-icon fontSet="fontawesome" fontIcon="fa-users"></mat-icon>
-            <span>New Manifest</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon fontSet="fontawesome" fontIcon="fa-people-carry"></mat-icon>
-            <span>New Bill of Lading</span>
-          </button>
-        </mat-menu>
       </div>
     </div>
   </div>
 </cbp-app-header>
 
-<!-- NOTE: Navigation Header Router Link isn't actually active though-->
 <ng-template #tabbedAppNav>
   <nav mat-tab-nav-bar>
     <a mat-tab-link [active]="true" href="#" *ngFor="let link of appNavigations">
