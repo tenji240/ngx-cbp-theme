@@ -1,40 +1,33 @@
 import { Injectable } from '@angular/core';
-import {
-  ReplaySubject,
-  Subject
-} from 'rxjs';
-import {
-  CBPUser,
-  CBPUserService
-} from '../user/user';
+import { of, ReplaySubject, Subject } from 'rxjs';
+import { CBPUser, CBPUserService } from '../user/user';
+import { delay, first, tap } from 'rxjs/operators';
 
 @Injectable()
 export class MockUserService extends CBPUserService {
 
-  private subject: ReplaySubject <CBPUser> = new ReplaySubject <CBPUser> ();
+  private subject: ReplaySubject<CBPUser> = new ReplaySubject<CBPUser>();
   private loggedIn = false;
 
   constructor() {
     super();
   }
 
-  getUser(): Subject <CBPUser> {
+  getUser(): Subject<CBPUser> {
     return this.subject;
   }
-  login(delay = 3000): Subject <CBPUser> {
-    setTimeout(() => {
+
+  login(someDelay = 3000): Subject<CBPUser> {
+    of(1).pipe(first(), delay(someDelay), tap(() => {
       this.loggedIn = true;
       const user = new CBPUser();
-      user.firstName = 'John';
-      user.lastName = 'Doe';
-      user.carrierCode = 'ZZZZ';
-      user.shippingCompany = 'Based Shipping';
+      user.firstName = 'First';
+      user.lastName = 'LastName';
       user.preferences = {
         favoriteAppIds: this._randomlyGetFavoritAppId()
       };
       this.subject.next(user);
-      // this.subject.complete();
-    }, delay);
+    })).subscribe();
     return this.subject;
   }
 
@@ -42,7 +35,7 @@ export class MockUserService extends CBPUserService {
   logout(): void {
     this.loggedIn = false;
     this.subject.next(null);
-    // console.log('mock logout');
+    console.log('mock logout');
   }
 
   isLoggedIn(): boolean {

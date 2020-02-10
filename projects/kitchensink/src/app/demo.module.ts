@@ -6,12 +6,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 
-import { DemoCBPAccordionComponent } from './demo-cbp-accordion/demo-cbp-accordion.component';
-import { DemoTypographyComponent } from './demo-typography/demo-typography.component';
-import { DemoButtonsModule } from './demo-buttons/demo-buttons.module';
-import { DemoTableModule } from './demo-table/demo-table.module';
-import { DemoAppHeaderModule } from './demo-app-header/demo-app-header.module';
-import { HttpClientModule } from '@angular/common/http';
+import {DemoAppComponent} from './demo.component';
+
+
+import {MatIconModule, MatTabsModule} from '@angular/material';
+import {DemoTypographyComponent} from './demo-typography/demo-typography.component';
+import {DemoButtonsModule} from './demo-buttons/demo-buttons.module';
+import {DemoAppHeaderModule} from './demo-app-header/demo-app-header.module';
+import {HttpClientModule} from '@angular/common/http';
 
 import * as pkg from '../../../../package.json';
 import { DemoNotificationsModule } from './demo-notifications/demo-notifications.module';
@@ -19,14 +21,13 @@ import {
   CBP_APPLICATIONS_SERVICE,
   CBP_FEEDBACK_SERVICE,
   CBP_USER_SERVICE,
-  CBPAccordionModule,
   CBPAppHeaderModule,
   CBPHeaderModule,
   CBPNotificationsModule,
   CBPRootModule,
-  MockUserService,
   MockApplicationsService,
-  MockFeedbackService
+  MockFeedbackService,
+  MockUserService
 } from 'ngx-cbp-theme';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
@@ -38,7 +39,6 @@ export const KITCHENSINK_APP_VERSION = ( < any > pkg).version;
 @NgModule({
   declarations: [
     DemoAppComponent,
-    DemoCBPAccordionComponent,
     DemoTypographyComponent
   ],
   imports: [
@@ -50,7 +50,6 @@ export const KITCHENSINK_APP_VERSION = ( < any > pkg).version;
     CommonModule,
     MatSelectModule,
     CBPRootModule,
-    CBPAccordionModule,
     CBPHeaderModule,
     CBPAppHeaderModule,
     CBPNotificationsModule,

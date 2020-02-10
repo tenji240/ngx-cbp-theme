@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DemoAppHeaderComponent } from './demo-app-header.component';
-import { CBPAppHeaderModule} from 'ngx-cbp-theme';
+import { CBPAppHeaderModule } from 'ngx-cbp-theme';
+import { MatButtonModule, MatIconModule, MatTabsModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatTabsModule } from '@angular/material/tabs';
-
 
 @NgModule({
   imports: [
@@ -22,4 +18,5 @@ import { MatTabsModule } from '@angular/material/tabs';
   declarations: [DemoAppHeaderComponent],
   exports: [DemoAppHeaderComponent]
 })
-export class DemoAppHeaderModule { }
+export class DemoAppHeaderModule {
+}

@@ -1,48 +1,35 @@
-import { of as observableOf,
-  Observable,
-  BehaviorSubject
-} from 'rxjs';
+import { Observable, of, ReplaySubject, scheduled } from 'rxjs';
 
-import {
-  map
-} from 'rxjs/operators';
-import {
-  Inject,
-  Injectable
-} from '@angular/core';
-import {
-  CBP_USER_SERVICE,
-  CBPUser,
-  CBPUserService
-} from '../user/user';
-import {
-  CBPApplication,
-  CBPApplicationsData,
-  CBPApplicationsService
-} from '../applications/cbp-applications-service';
+import { delay, map, switchMap } from 'rxjs/operators';
+import { Inject, Injectable } from '@angular/core';
+import { CBP_USER_SERVICE, CBPUser, CBPUserService } from '../user/user';
+import { CBPApplication, CBPApplicationsData, CBPApplicationsService } from '../applications/cbp-applications-service';
+
 
 @Injectable()
 export class MockApplicationsService extends CBPApplicationsService {
-  private subject: BehaviorSubject < CBPApplicationsData > = new BehaviorSubject < CBPApplicationsData > (null);
+
+
+  private subject: ReplaySubject<CBPApplicationsData> = new ReplaySubject<CBPApplicationsData>(1);
   private loaded = false;
+  private data: CBPApplicationsData;
 
   constructor(@Inject(CBP_USER_SERVICE) private userService: CBPUserService) {
     super();
+    this.data = new CBPApplicationsData();
   }
 
-  getApplicationsData(): Observable < CBPApplicationsData > {
-    this._load();
-    return this.subject;
+  getApplicationsData(): Observable<CBPApplicationsData> {
+    return this._load(false);
   }
 
-  refresh(): Observable < boolean > {
-    this.loaded = false;
-    this._load();
-    return null;
+  refresh(): Observable<boolean> {
+    return this._load(true).pipe(map(() => true));
   }
+
   search(token: string): CBPApplication[] {
     token = token.toLowerCase();
-    const appData: CBPApplicationsData = this.subject.getValue();
+    const appData: CBPApplicationsData = this.data;
     if (appData && appData.list) {
       return appData.list.filter((app) => {
         return (app.name.toLowerCase().indexOf(token)) >= 0;
@@ -51,12 +38,12 @@ export class MockApplicationsService extends CBPApplicationsService {
     return [];
   }
 
-  removeRecentApplication(recentApplication: CBPApplication): Observable < boolean > {
-    const data: CBPApplicationsData = this.subject.getValue();
-    return this._removeAppFromArray(recentApplication, data.recents);
+  removeRecentApplication(recentApplication: CBPApplication): Observable<boolean> {
+    return this._removeAppFromArray(recentApplication, this.data.recents);
   }
 
-  private _removeAppFromArray(app: CBPApplication, fromArray: CBPApplication[]): Observable < boolean > {
+
+  private _removeAppFromArray(app: CBPApplication, fromArray: CBPApplication[]): Observable<boolean> {
     const index = fromArray.indexOf(app);
     if (index >= 0) {
       fromArray.splice(index, 1);
@@ -64,80 +51,54 @@ export class MockApplicationsService extends CBPApplicationsService {
     return null;
   }
 
-  /**
-   * _load() - initates the get request to retrive the list of CBP apps used
-   * as well as the user data
-   */
-  private _load() {
-    if (!this.loaded) {
-      this.loaded = true;
-      // simulates fetching some data
-      setTimeout(() => {
-        this._getData().subscribe({
-          next: data => {
-            // next() few items then we send other items
-            this.subject.next(data);
-            // we enhance data from user later
-            this.userService.getUser().subscribe({
-              next: (user: CBPUser) => {
-                this.subject.next(this._applyUserToApplications(user, data));
-              }
-            });
-          }
-        });
-      }, 2000);
-    }
-  }
-
-  /**
-   * _getData - collects the and forms the final data object to be consumed by the
-   * universal header
-   */
-  private _getData(): Observable < CBPApplicationsData > {
-    return this._getMockHttpData().pipe(
-      map((data: CBPApplicationsData) => {
-        data.lastRetrieved = new Date();
-        data.currentApp = new CBPApplication('Manifest Trade Portal');
-        this.currentApp.next(data.currentApp);
-        return data;
-      }));
-  }
-
-  /**
-   * _getMockHttpData - fakes an HTTP request and generates 100 apps for
-   * processing recents and favorites for the universal nav
-   * @param - none
-   * @return - list of 100 CBPApplicationsData items in an array
-   */
-
-  private _getMockHttpData(): Observable < CBPApplicationsData > {
+  private _getMockHttpData(): Observable<CBPApplicationsData> {
     const rawList: any[] = [];
     let count = 100;
     do {
-      rawList.push({
-        id: `${count}`,
-        name: `App ${count}`,
-        description: `Description ${count}`,
-        href: `http://example.com/app-${count}`
-      });
+      rawList.push(
+        {
+          id: `${count}`,
+          name: `App ${count}`, description: `Description ${count}`, href: `http://example.com/app-${count}`
+        });
     } while (count-- >= 0);
 
-    const data = new CBPApplicationsData();
-    data.list = < CBPApplication[] > rawList;
-    return observableOf(data);
-
+    const data: CBPApplicationsData = new CBPApplicationsData();
+    data.list = <CBPApplication[]>rawList;
+    return of(data).pipe(delay(2000));
   }
 
+  private _load(force = false): Observable<CBPApplicationsData> {
+    if (force || !this.loaded) {
+      this.loaded = true;
+      return this._getMockHttpData().pipe(
+        map(results => {
+          results.lastRetrieved = new Date();
+          results.currentApp = {name: 'Kitchen Sink'} as CBPApplication;
+          this.data = results;
+          this.currentApp.next(results.currentApp);
+          return results;
+        }),
+        switchMap((results) => {
+          return this.userService.getUser()
+            .pipe(map(user => {
+              return this._applyUserToApplications(user, results);
+            }));
+        })
+      );
+    }
+    return of<CBPApplicationsData>(this.data);
+  }
+
+
   /**
-   * _applyUserToApplications - accepts a user and data opect
+   * Fakeology - it does not even use user object
    * @param CBPUser user
    * @param CBPApplicationsData data
-   * @returns CBPApplicationsData -
+   * @returns CBPApplicationsData
    */
   private _applyUserToApplications(user: CBPUser, data: CBPApplicationsData): CBPApplicationsData {
 
-    const applications = < CBPApplication[] > data.list;
-    // const applications = [];
+    const applications = <CBPApplication[]>data.list;
     if (applications) {
       let random;
       data.recents = [];
@@ -154,11 +115,13 @@ export class MockApplicationsService extends CBPApplicationsService {
     }
     return data;
   }
+
   private _randomIndex(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
 
   private _getFavoritesFromUserPreferences(applications: CBPApplication[], userFavoriteAppIds: String[]): CBPApplication[] {
     if (!userFavoriteAppIds || !applications) {

@@ -14,4 +14,5 @@ import { MockFeedbackService } from './feedback.mock.service';
     MockFeedbackService
   ]
 })
-export class CBPMockServicesModule { }
+export class CBPMockServicesModule {
+}

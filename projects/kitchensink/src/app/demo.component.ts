@@ -1,5 +1,4 @@
-import {Component} from '@angular/core';
-import { MatSelectChange } from '@angular/material/select';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 export interface Food {
   value: string;
@@ -10,6 +9,7 @@ export interface Food {
   selector: 'demo-app-root, cbp-demo-app-root',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DemoAppComponent {
   foods: Food[] = [
@@ -23,16 +23,7 @@ export class DemoAppComponent {
   }
 
   myPreferences(): void {
-      // console.log('demo::myPreferences implementation');
-  }
-
-  change($event: MatSelectChange): void {
-    console.log('[DEMO HEADER]', $event);
-    this.myEvent = $event.value;
-  }
-
-  public activateNotification(): void {
-    console.log('success notificaion');
+    console.log('demo::myPreferences implementation');
   }
 }
 

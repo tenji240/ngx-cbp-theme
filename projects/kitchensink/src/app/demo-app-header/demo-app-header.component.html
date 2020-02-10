@@ -1,4 +1,11 @@
-<cbp-app-header class="cbp-app-header cbp-toolbar">
+<cbp-app-header>
+
+  <div class="cbp-app-title">
+    <h2 class="app-title" ngClass.gt-xs="vertical-divider">
+      Kitchen Sink
+      <small>Demo</small>
+    </h2>
+  </div>
 
   <div class="cbp-app-main-nav">
     <div fxShow="false" fxShow.gt-xs="true">
@@ -38,20 +45,9 @@
           </button>
         </mat-menu>
       </div>
-    </div>
-  </div>
-
-  <!-- NOTE: Contents are not rendering -->
-  <div class="cbp-app-sub-content">
-    <div
-    fxLayout="row"
-    fxLayoutAlign="space-between center">
-      <div>
-        {{ companyName }}
-      </div>
-      <div>
-        <button mat-mini-fab color="primary">
-          <mat-icon fontSet="fontawesome" fontIcon="fa-plus"></mat-icon>
+      <div class="cbp-navbar-item">
+        <button mat-icon-button>
+          <mat-icon aria-label="wifi" fontSet="fontawesome" fontIcon="fa-wifi"></mat-icon>
         </button>
         <button mat-flat-button [matMenuTriggerFor]="contextMenu">
           Create

@@ -1,32 +1,21 @@
 <div class="cbp-user-navitem">
-  <ng-template [ngTemplateOutlet]="userView"></ng-template>
+  <ng-container *ngIf="isLoggedIn$ | async; else notLoggedIn;">
+    <div role="button" *ngIf="isLoggedIn && userDataLoaded" (click)="toggleMenu($event)">
+      <mat-icon fontSet="fontawesome" fontIcon="fa-user"></mat-icon>
+      <span fxShow="false" fxShow.gt-sm fxShow.lt-sm>{{ user.firstName }} {{ user.lastName }}</span>
+      <mat-icon fontSet="fontawesome" fontIcon="fa-caret-down"></mat-icon>
+    </div>
+  </ng-container>
 </div>
 
-<ng-template #userView>
-  <button mat-button *ngIf="!isLoggedIn && !loginProgress" (click)="login($event)">
-    <mat-icon fontSet="fontawesome" fontIcon="fa-sign-in-alt"></mat-icon>
-    <span class="cbp-toolbar-username" fxShow="false" fxShow.gt-sm fxShow.lt-sm>Login</span>
-  </button>
-  <div class="cbp-user-login-in-progress"  *ngIf="!isLoggedIn && loginProgress">
+<ng-template #notLoggedIn>
+  <div role="button" *ngIf="!isLoggedIn && !loginProgress" (click)="login($event)">
+    <mat-icon fontSet="fontawesome" fontIcon="fa-sign-in"></mat-icon>
+    <span fxShow="false" fxShow.gt-sm fxShow.lt-sm>Login</span>
+  </div>
+  <div class="cbp-user-login-in-progress" *ngIf="!isLoggedIn && loginProgress">
     <cbp-loading></cbp-loading>
   </div>
-
-  <ng-container *ngIf="cbpNotificationsCount > 0 && isLoggedIn && userDataLoaded">
-    <button mat-icon-button aria-label="notifications" (click)=notificationClick()>
-      <mat-icon fontSet="fontawesome"
-        matBadge="{{ cbpNotificationsCount }}"
-        matBadgePosition="above after"
-        matBadgeColor="warn"
-        fontIcon="fa-bell">
-      </mat-icon>
-    </button>
-  </ng-container>
-
-  <button mat-button *ngIf="isLoggedIn && userDataLoaded"  (click)="toggleMenu($event)">
-    <mat-icon fontSet="fontawesome" fontIcon="fa-user"></mat-icon>
-    <span class="cbp-toolbar-username" fxShow="false" fxShow.gt-sm fxShow.lt-sm>{{displayUserBar()}}</span>
-    <mat-icon fontSet="fontawesome" fontIcon="fa-caret-down"></mat-icon>
-  </button>
 </ng-template>
 
 <mat-menu #userMenu="matMenu" yPosition="above" xPosition="before" [overlapTrigger]="false">
@@ -37,13 +26,10 @@
   <ng-template [ngTemplateOutlet]="userMenuPanel"></ng-template>
 </div>
 
+
 <ng-template #userMenuPanel>
   <ng-content select="div[cbp-user-menu-item]"></ng-content>
-  <button mat-menu-item (click)="logout()">
-    <i class="fa fa-sign-out"></i>
-    <mat-icon fontSet="fontawesome" fontIcon="fa-sign-out-alt"></mat-icon>
-    <span>Logout</span>
-  </button>
+  <div class="mat-menu-item" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</div>
 </ng-template>
 
 <div [matMenuTriggerFor]="userMenu"></div>

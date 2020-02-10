@@ -1,28 +1,17 @@
-import {
-  Component,
-  ContentChild,
-  Inject,
-  Input,
-  ViewEncapsulation
-} from '@angular/core';
-import { CBPUserMenuComponent } from '../../user/user-menu/user-menu.component';
-import { CBPFeedbackLinkComponent } from '../../feedback/feedback-link.component';
-import { CBPApplicationsMenuComponent } from '../../applications/apps-menu/apps-menu.component';
-import {
-  CBPToolbarState,
-  CBP_HEADER_STATE
-} from '../cbp-toolbar/cbp-toolbar-state';
-import {
-  CBP_APPLICATIONS_SERVICE,
-  CBPApplicationsService
-} from '../../applications/cbp-applications-service';
+import {ChangeDetectionStrategy, Component, ContentChild, Inject, Input, ViewEncapsulation} from '@angular/core';
+import {CBPUserMenuComponent} from '../../user/user-menu/user-menu.component';
+import {CBPFeedbackLinkComponent} from '../../feedback/feedback-link.component';
+import {CBPApplicationsMenuComponent} from '../../applications/apps-menu/apps-menu.component';
+import {CBP_HEADER_STATE, CBPToolbarState} from '../cbp-toolbar/cbp-toolbar-state';
+import {CBP_APPLICATIONS_SERVICE, CBPApplicationsService} from '../../applications/cbp-applications-service';
 
 
 @Component({
   selector: 'cbp-header',
   templateUrl: './cbp-header.component.html',
   styleUrls: ['./cbp-header.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CBPHeaderComponent {
 

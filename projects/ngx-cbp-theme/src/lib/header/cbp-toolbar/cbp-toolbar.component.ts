@@ -1,15 +1,28 @@
-import {Component, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {CBPScrollShrinkAnimator} from './cbp-scrollshrink-animator';
-import {MediaChange, MediaObserver} from '@angular/flex-layout';
-import {Subscription} from 'rxjs';
-import { matSelectAnimations } from '@angular/material/select';
-import {CBPToolbarState} from './cbp-toolbar-state';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
+import { CBPScrollShrinkAnimator } from './cbp-scrollshrink-animator';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
+import { matSelectAnimations } from '@angular/material';
+import { CBPToolbarState } from './cbp-toolbar-state';
 
 @Component({
   selector: 'cbp-toolbar',
   templateUrl: './cbp-toolbar.component.html',
   styleUrls: ['./cbp-toolbar.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     CBPScrollShrinkAnimator.createScrollShrinkTrigger('cbpToolbarScrollState', '*', '-50px'),
     matSelectAnimations.fadeInContent
@@ -47,19 +60,21 @@ export class CBPToolbarComponent implements OnInit, OnDestroy {
     this.toolbarState.hasToolbarMenu.next(has);
   }
 
-  constructor(private mediaObserver: MediaObserver) {
+  constructor(private mediaObserver: MediaObserver,
+              private _cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
     this.cbpToolbarScrollState = 'initial';
-    this._subscription.add(this.mediaObserver.media$.subscribe(
-      (change: MediaChange) => {
-        if (change.mqAlias !== 'xs') {
+    this._subscription.add(this.mediaObserver.asObservable().subscribe(
+      () => {
+        if (!this.mediaObserver.isActive('xs')) {
           this.isToolbarExpanded = false;
           this.hasToolbarMenu = false;
         } else {
           this.hasToolbarMenu = true;
         }
+        this._cdr.markForCheck();
       }
     ));
   }

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CBPFeedbackLinkComponent } from './feedback-link.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -12,4 +11,5 @@ import { MatIconModule } from '@angular/material/icon';
   declarations: [CBPFeedbackLinkComponent],
   exports: [CBPFeedbackLinkComponent],
 })
-export class CBPFeedbackModule { }
+export class CBPFeedbackModule {
+}

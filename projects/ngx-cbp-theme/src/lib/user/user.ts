@@ -9,8 +9,6 @@ export class CBPUser {
   lastName: String;
   userId: String;
   preferences: any;
-  carrierCode?: string;
-  shippingCompany?: string;
 }
 
 /**
@@ -25,7 +23,7 @@ export abstract class CBPUserService {
     return this._loginInProgress;
   }
 
-  set loginInProgress(loginInProgress: boolean ) {
+  set loginInProgress(loginInProgress: boolean) {
     this._loginInProgress = loginInProgress;
   }
 
@@ -44,7 +42,7 @@ export abstract class CBPUserService {
 
   /**
    * Provide implementation for logout.
-   * void method
+   * @returns CBPUser
    */
   abstract logout(): void;
 }

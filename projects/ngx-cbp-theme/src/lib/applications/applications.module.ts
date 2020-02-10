@@ -1,20 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CBPApplicationsMenuComponent } from './apps-menu/apps-menu.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule } from '@angular/material';
 import { CBPProgressModule } from '../progress/progress.module';
 import { CBPPipesModule } from '../pipes/pipes.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {
-  FormsModule,
-  ReactiveFormsModule
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CBPApplicationsSearchComponent } from './applications-search/applications-search.component';
+
 
 @NgModule({
   imports: [
@@ -40,4 +33,5 @@ import { CBPApplicationsSearchComponent } from './applications-search/applicatio
     CBPApplicationsSearchComponent
   ]
 })
-export class CBPApplicationsModule { }
+export class CBPApplicationsModule {
+}

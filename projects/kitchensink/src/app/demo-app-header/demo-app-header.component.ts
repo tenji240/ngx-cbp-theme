@@ -12,19 +12,21 @@ import { APP_HEADER_STATE, CBPToolbarState } from 'ngx-cbp-theme';
 })
 export class DemoAppHeaderComponent implements OnInit {
 
-  appNavigations = [{
-      name: 'Dashboard',
-      link: '/'
-    },
-    {
-      name: 'Manifests',
-      link: '/'
-    },
-    {
-      name: 'Bills of Lading',
-      link: '/'
-    }
-  ];
+  appNavigations = [
+    {name: 'Info'},
+    {name: 'Findings'},
+    {name: 'Attachments'},
+    {name: 'Results'},
+    {name: 'Some'},
+    {name: 'More'},
+    {name: 'Items'},
+    {name: 'Remarks'},
+    {name: 'History'},
+    {name: 'Notes'},
+    {name: 'Ideas'}];
+
+  constructor() {
+  }
 
   companyName = 'Nicholas Trading Company';
 

@@ -1,14 +1,6 @@
 {
-  "name": "ngx-cbp-theme-alt",
-  "version": "2.0.6",
-  "author": "CBP CF Team / Tenji Tembo",
-  "description": "Angular Material Based CBP Compliant Theme",
-  "contributors": [
-    {
-      "name": "Tenji Tembo",
-      "email": "tenji240@gmail.com"
-    }
-  ],
+  "name": "ngx-cbp-theme",
+  "version": "8.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/tenji240/ngx-cbp-theme.git"

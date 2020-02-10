@@ -11,4 +11,5 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [CBPToolbarComponent],
   exports: [CBPToolbarComponent]
 })
-export class CBPToolbarModule { }
+export class CBPToolbarModule {
+}

@@ -30,4 +30,5 @@ import { CBPProgressModule } from '../progress/progress.module';
     CBPUserMenuComponent
   ]
 })
-export class CBPUserModule { }
+export class CBPUserModule {
+}
