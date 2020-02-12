@@ -5,19 +5,20 @@ import {
   OnInit,
   ViewChild,
   ViewEncapsulation,
-  Input
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {
   CBP_USER_SERVICE,
   CBPUser,
   CBPUserService
 } from '../user';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, throwError } from 'rxjs';
 import { MatMenuTrigger } from '@angular/material/menu';
 import {
   CBPToolbarState,
   CBP_HEADER_STATE
 } from '../../header/cbp-toolbar/cbp-toolbar-state';
+import { map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'cbp-user-menu, [cbp-user-menu], .cbp-user-menu',
@@ -37,7 +38,7 @@ export class CBPUserMenuComponent implements OnInit, OnDestroy {
 
   private subscriptions = new Subscription();
 
-  @ViewChild(MatMenuTrigger) userMenuTrigger: MatMenuTrigger;
+  @ViewChild(MatMenuTrigger, {static: false}) userMenuTrigger: MatMenuTrigger;
 
   get toolbarIsExpanded(): boolean {
     return this.toolbarState.toolbarIsExpanded.getValue();

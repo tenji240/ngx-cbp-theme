@@ -1,5 +1,9 @@
 @import '../../variables';
 
+// HACK
+$alert-padding: 6px !default;
+$modal-inner-padding: 15px !default;
+
 $toast-band-width: 8px !default;
 $toast-progress-height: 4px !default;
 .toast {

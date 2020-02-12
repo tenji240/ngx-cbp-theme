@@ -28,8 +28,6 @@ export class CBPApplicationsData {
 export abstract class CBPApplicationsService {
   protected currentApp: ReplaySubject < CBPApplication > = new ReplaySubject(1);
 
-  protected currentApp: ReplaySubject<CBPApplication> = new ReplaySubject(1);
-
   /**
    * For any data fetching and initialization before other API can be called.
    * @returns Observable<CBPApplicationsData>
@@ -67,10 +65,6 @@ export abstract class CBPApplicationsService {
    */
   public getCurrentApp(): Observable<CBPApplication> {
     return this.currentApp;
-  }
-
-  public getApplicationsDirectoryUrl(): string {
-    return window.location.origin;
   }
 
   /**
