@@ -1,15 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DemoAppComponent } from './demo.component';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-
 import {DemoAppComponent} from './demo.component';
-
-
-import {MatIconModule, MatTabsModule} from '@angular/material';
 import {DemoTypographyComponent} from './demo-typography/demo-typography.component';
 import {DemoButtonsModule} from './demo-buttons/demo-buttons.module';
 import {DemoAppHeaderModule} from './demo-app-header/demo-app-header.module';
@@ -32,6 +26,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { DemoHeaderBetaModule } from './demo-header-beta/demo-header-beta.module';
+import { DemoTableModule } from './demo-table/demo-table.module';
 
 // NOTE: You don't really need this at the moment
 export const KITCHENSINK_APP_VERSION = ( < any > pkg).version;

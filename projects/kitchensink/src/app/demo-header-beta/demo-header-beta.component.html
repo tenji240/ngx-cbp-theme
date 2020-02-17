@@ -13,9 +13,17 @@
 
         <div class="cbp-toolbar-main-nav-container">
           <div fxFlex="auto" class="cbp-toolbar-main-nav">
-            <button class="mat-button cbp-current-application">
-              Manifest Trade Portal
+            <button class="mat-button cbp-current-application" [matMenuTriggerFor]="appsMenu">
+              {{ activeAppName }}
+              <mat-icon fontSet="fontawesome" fontIcon="fa-caret-down"></mat-icon>
             </button>
+            <mat-menu #appsMenu="matMenu" class="demo-user-menu">
+              <ng-container *ngFor="let link of appNavigations">
+                <button mat-menu-item (click)="setAppName($event, link.name)">
+                  {{link.name}}
+                </button>
+              </ng-container>
+            </mat-menu>
           </div>
         </div>
 
@@ -23,6 +31,12 @@
           <div fxLayout="column" fxLayoutAlign="end stretch">
             <div class="cbp-toolbar-right-nav" fxFlexAlign.gt-xs="end" fxLayout.gt-xs="row" fxLayout.lt-sm="column">
               <div fxFlex="auto" class="cbp-user-navitem">
+                <button mat-flat-button color="primary">
+                  <mat-icon fontSet="fontawesome" fontIcon="fa-comments"></mat-icon>
+                  <span class="cbp-toolbar-username" fxShow="false" fxShow.gt-xs>
+                    Feedback
+                  </span>
+                </button>
                 <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">
                   <mat-icon fontSet="fontawesome" fontIcon="fa-user"></mat-icon>
                   <span class="cbp-toolbar-username" fxShow="false" fxShow.gt-xs>
@@ -59,14 +73,13 @@
 
   <div class="cbp-app-header">
     <div class="cbp-toolbar">
-      <mat-toolbar class="cbp-toolbar-row">
+      <mat-toolbar class="cbp-toolbar-row" fxLayout="row" fxLayoutAlign="space-between center">
         <div class="cbp-app-main-nav">
-          <div>
+          <div fxFlex>
             <nav mat-tab-nav-bar>
-              <a mat-tab-link mat-menu-item> <span>Dashboard</span> </a>
-              <a mat-tab-link mat-menu-item> <span>Manifest</span> </a>
-              <a mat-tab-link mat-menu-item> <span>Bill of Lading</span> </a>
-              <a mat-tab-link mat-menu-item> <span>Account</span> </a>
+              <a mat-tab-link [active]="true" href="#" *ngFor="let link of appNavigations">
+                {{link.name}}
+              </a>
             </nav>
           </div>
         </div>
@@ -74,16 +87,23 @@
     </div>
   </div>
 
-  <div class="cbp-sub-header">
+  
+    <div class="cbp-sub-header">
     <div class="cbp-toolbar">
       <mat-toolbar class="cbp-toolbar-row" fxLayout="row" fxLayoutAlign="space-between center">
         <div fxFlex fxLayoutAlign="start start">
           <h5 class="page-header">Kitchen Sink</h5>
         </div>
         <div fxFlex fxLayoutAlign="end end">
-          <button mat-flat-button color="primary">Create</button>
+          <button mat-icon-button>
+            <mat-icon fontSet="fontawesome" fontIcon="fa-print"></mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon fontSet="fontawesome" fontIcon="fa-wifi"></mat-icon>
+          </button>
         </div>
       </mat-toolbar>
     </div>
   </div>
+  
 </div>

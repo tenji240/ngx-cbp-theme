@@ -1,4 +1,7 @@
 @import '../../../../../dist/ngx-cbp-theme/styles/variables';
+@import '../../../../../dist/ngx-cbp-theme/styles/theme/header';
+
+@include cbp-ngx-header();
 
 .app-right-nav-items {
   display: flex;
@@ -41,10 +44,23 @@
   }
 }
 
-cbp-app-main-nav .app-stacked-nav {
-  border-top: 1px solid darken($navbar-default-border, 4%);
+// cbp-app-main-nav .app-stacked-nav {
+//   border-top: 1px solid darken($navbar-default-border, 4%);
+// }
+
+// cbp-app-right-nav .app-stacked-nav {
+//   border-bottom: 1px solid darken($navbar-default-border, 4%);
+// }
+
+.cbp-app-main-nav {
+  .mat-tab-link {
+    font-size: $font-size-base !important;
+    min-width: 120px;
+    padding: 0px;
+  }
 }
 
-cbp-app-right-nav .app-stacked-nav {
-  border-bottom: 1px solid darken($navbar-default-border, 4%);
+.page-header {
+  font-size: $font-size-h5;
+  font-weight: bold;
 }

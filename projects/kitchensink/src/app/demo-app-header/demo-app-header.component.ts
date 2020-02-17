@@ -1,9 +1,7 @@
 import {
   Component,
-  OnInit,
-  Inject
+  OnInit
 } from '@angular/core';
-import { APP_HEADER_STATE, CBPToolbarState } from 'ngx-cbp-theme';
 
 @Component({
   selector: 'cbp-demo-demo-app-header, demo-demo-app-header',
@@ -27,10 +25,6 @@ export class DemoAppHeaderComponent implements OnInit {
 
   constructor() {
   }
-
-  companyName = 'Nicholas Trading Company';
-
-  constructor(@Inject(APP_HEADER_STATE) public toolbarState: CBPToolbarState) {}
 
   ngOnInit() {}
 

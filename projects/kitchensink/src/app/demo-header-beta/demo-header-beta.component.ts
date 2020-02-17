@@ -30,6 +30,8 @@ export interface Food {
 export class DemoHeaderBetaComponent implements OnInit {
   public cbpToolbarScrollState: 'up' | 'initial';
   public toolbarState: CBPToolbarState;
+  public activeAppName = 'Manifest Trade Portal';
+
   constructor(protected ngZone: NgZone) {
     this.toolbarState = new CBPToolbarState();
   }
@@ -47,8 +49,26 @@ export class DemoHeaderBetaComponent implements OnInit {
     }
   ];
 
-  change($event: MatSelectChange): void {
+  public appNavigations: { name: string }[] = [
+    { name: 'Dashboard' },
+    { name: 'Findings' },
+    { name: 'Attachments' },
+    { name: 'Results' },
+    { name: 'Some' },
+    { name: 'More' },
+    { name: 'Items' },
+    { name: 'Remarks' },
+    { name: 'History' },
+    { name: 'Notes' },
+    { name: 'Ideas' }
+  ];
+
+  public change($event: MatSelectChange): void {
     console.log('[DEMO HEADER]', $event);
+  }
+
+  public setAppName($event: any, item: string) {
+    this.activeAppName = item;
   }
 
   public ngOnInit(): void {

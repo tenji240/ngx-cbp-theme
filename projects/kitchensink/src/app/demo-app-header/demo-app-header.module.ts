@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DemoAppHeaderComponent } from './demo-app-header.component';
 import { CBPAppHeaderModule } from 'ngx-cbp-theme';
-import { MatButtonModule, MatIconModule, MatTabsModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatTabsModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatTabsModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatToolbarModule,
   ],
   declarations: [DemoAppHeaderComponent],
   exports: [DemoAppHeaderComponent]
